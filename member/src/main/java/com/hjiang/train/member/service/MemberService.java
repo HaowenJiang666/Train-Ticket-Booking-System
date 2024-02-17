@@ -5,6 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.hjiang.train.common.exception.BusinessException;
 import com.hjiang.train.common.exception.BusinessExceptionEnum;
+import com.hjiang.train.common.util.JwtUtil;
 import com.hjiang.train.common.util.SnowUtil;
 import com.hjiang.train.member.domain.Member;
 import com.hjiang.train.member.domain.MemberExample;
@@ -27,7 +28,6 @@ public class MemberService {
 
     @Resource
     private MemberMapper memberMapper;
-    private MemberLoginResp memberLoginResp;
 
     public int count() {
         return Math.toIntExact(memberMapper.countByExample(null));
@@ -79,7 +79,11 @@ public class MemberService {
         if (!"8888".equals(code)) {
             throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_CODE_ERROR);
         }
-        return BeanUtil.copyProperties(memberDB, MemberLoginResp.class);
+
+        MemberLoginResp memberLoginResp = BeanUtil.copyProperties(memberDB, MemberLoginResp.class);
+        String token = JwtUtil.createToken(memberLoginResp.getId(), memberLoginResp.getMobile());
+        memberLoginResp.setToken(token);
+        return memberLoginResp;
     }
 
     private Member selectByMobile(String mobile) {
