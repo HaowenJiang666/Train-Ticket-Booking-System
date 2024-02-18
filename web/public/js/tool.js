@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 Tool = {
     /**
      * 空校验 null或""都返回true
