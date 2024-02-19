@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ServerGenerator {
-    static String servicePath = "[module]/src/main/java/com/hjiang/train/member/service";
+    static String servicePath = "[module]/src/main/java/com/hjiang/train/member/service/";
     static String pomPath = "generator\\pom.xml";
     static {
         new File(servicePath).mkdirs();
