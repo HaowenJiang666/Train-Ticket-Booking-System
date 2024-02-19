@@ -1,4 +1,4 @@
-package com.hjiang.train.generator.server;
+package com.hjiang.train.generator.gen;
 
 import com.hjiang.train.generator.util.DbUtil;
 import com.hjiang.train.generator.util.Field;
