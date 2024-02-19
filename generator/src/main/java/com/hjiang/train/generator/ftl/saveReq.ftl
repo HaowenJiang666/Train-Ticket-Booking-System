@@ -1,4 +1,4 @@
-package com.hjiang.train.member.req;
+package com.hjiang.train.${module}.req;
 
 <#list typeSet as type>
 <#if type=='Date'>

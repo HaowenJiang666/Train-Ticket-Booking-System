@@ -1,4 +1,4 @@
-package com.hjiang.train.member.service;
+package com.hjiang.train.${module}.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
@@ -8,12 +8,12 @@ import com.github.pagehelper.PageInfo;
 import com.hjiang.train.common.context.LoginMemberContext;
 import com.hjiang.train.common.resp.PageResp;
 import com.hjiang.train.common.util.SnowUtil;
-import com.hjiang.train.member.domain.${Domain};
-import com.hjiang.train.member.domain.${Domain}Example;
-import com.hjiang.train.member.mapper.${Domain}Mapper;
-import com.hjiang.train.member.req.${Domain}QueryReq;
-import com.hjiang.train.member.req.${Domain}SaveReq;
-import com.hjiang.train.member.resp.${Domain}QueryResp;
+import com.hjiang.train.${module}.domain.${Domain};
+import com.hjiang.train.${module}.domain.${Domain}Example;
+import com.hjiang.train.${module}.mapper.${Domain}Mapper;
+import com.hjiang.train.${module}.req.${Domain}QueryReq;
+import com.hjiang.train.${module}.req.${Domain}SaveReq;
+import com.hjiang.train.${module}.resp.${Domain}QueryResp;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
