@@ -11,6 +11,7 @@ create table `station` (
   unique key `name_unique` (`name`)
 ) engine=innodb default charset=utf8mb4 comment='车站';
 
+
 use `train_business`;
 drop table if exists `train`;
 create table `train` (
@@ -28,6 +29,7 @@ create table `train` (
   primary key (`id`),
   unique key `code_unique` (`code`)
 ) engine=innodb default charset=utf8mb4 comment='车次';
+
 
 use `train_business`;
 drop table if exists `train_station`;
@@ -47,3 +49,36 @@ create table `train_station` (
   unique key `train_code_index_unique` (`train_code`, `index`),
   unique key `train_code_name_unique` (`train_code`, `name`)
 ) engine=innodb default charset=utf8mb4 comment='火车车站';
+
+
+use `train_business`;
+drop table if exists `train_carriage`;
+create table `train_carriage` (
+  `id` bigint not null comment 'id',
+  `train_code` varchar(20) not null comment '车次编号',
+  `index` int not null comment '厢号',
+  `seat_type` char(1) not null comment '座位类型|枚举[SeatTypeEnum]',
+  `seat_count` int not null comment '座位数',
+  `row_count` int not null comment '排数',
+  `col_count` int not null comment '列数',
+  `create_time` datetime(3) comment '新增时间',
+  `update_time` datetime(3) comment '修改时间',
+  unique key `train_code_index_unique` (`train_code`, `index`),
+  primary key (`id`)
+) engine=innodb default charset=utf8mb4 comment='火车车厢';
+
+
+use `train_business`;
+drop table if exists `train_seat`;
+create table `train_seat` (
+  `id` bigint not null comment 'id',
+  `train_code` varchar(20) not null comment '车次编号',
+  `carriage_index` int not null comment '厢序',
+  `row` char(2) not null comment '排号|01, 02',
+  `col` char(1) not null comment '列号|枚举[SeatColEnum]',
+  `seat_type` char(1) not null comment '座位类型|枚举[SeatTypeEnum]',
+  `carriage_seat_index` int not null comment '同车厢座序',
+  `create_time` datetime(3) comment '新增时间',
+  `update_time` datetime(3) comment '修改时间',
+  primary key (`id`)
+) engine=innodb default charset=utf8mb4 comment='座位';
